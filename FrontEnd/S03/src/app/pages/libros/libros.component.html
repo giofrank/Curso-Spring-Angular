@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Mis libros</h2>
+
+            <table class="table mt-5">
+                <thead>
+                    <th>ID</th>
+                    <th>TITULO</th>
+                    <th>PRECIO</th>
+                    <th>PUBLICADO</th>
+                    <th>FECH CREACION</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let libro of libros">
+                        <td>{{ libro.id }}</td>
+                        <td>{{ libro.titulo }}</td>
+                        <td>{{ libro.precio | currency:'S/'}}</td>
+                        <td>
+                            <span class="badge bg-success" *ngIf="libro.publicacion; else noDisponible">SI</span>
+                            <ng-template #noDisponible>
+                                <span class="badge bg-danger">NO</span>
+                            </ng-template>
+                        </td>
+                        <td>{{ libro.fechaCreacion | date:'dd/mm/yyyy'}}</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="col-md-4">
+            <h2>Nuevo Libro</h2>
+            <app-reactive-form></app-reactive-form>
+            <hr>
+            <app-template-form></app-template-form>
+        </div>
+
+    </div>
+</div>
